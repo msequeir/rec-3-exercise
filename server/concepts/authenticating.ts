@@ -32,4 +32,10 @@ export default class AuthenticatingConcept {
   }
 
   // TODO: Write "authentication" code that makes sure the username exists
+  assertUsernameExists(username: string) {
+    // If undefined, that means we can't find username, which means user does not exist
+    if (this.users.find((user) => user.username === username) === undefined) {
+      throw new NotAllowedError("Username is not registered!");
+    }
+  }
 }
